@@ -3,23 +3,23 @@
         <h3>{{title}}</h3>
     </div>
     <div class="row w100 py-3">
-        <table class="table table-hover"style="width: 100%; border-collapse: collapse;">
+        <table class="table table-hover" style="width: 100%; border-collapse: collapse;">
             <thead class="thead">
-              <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Numero</th>
-                <th scope="col">Data</th>
-                <th scope="col">Tariffa Migliore</th>
-              </tr>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Numero</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Tariffa Migliore</th>
+                </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let ordine of ordini">
                     <th scope="row">{{ordine.id}}</th>
                     <td>{{ordine.numero}}</td>
                     <td>{{ordine.data}}</td>
-                    <td>{{getTariffaMigliore(ordine.id)}}</td>
+                    <td>{{getTariffaMigliore(ordine.id)?.costo}} € ({{getTariffaMigliore(ordine.id)?.nome_corriere}}, {{getTariffaMigliore(ordine.id)?.nome_tariffa}})</td>
                 </tr>
-            </tbody> 
+            </tbody>
         </table>
-    </div>       
+    </div>
 </div>
