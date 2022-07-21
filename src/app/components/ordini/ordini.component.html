@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row w100 py-3 pb-5">
+        <h3>{{title}}</h3>
+    </div>
+    <div class="row w100 py-3">
+        <table class="table table-hover"style="width: 100%; border-collapse: collapse;">
+            <thead class="thead">
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Numero</th>
+                <th scope="col">Data</th>
+                <th scope="col">Tariffa Migliore</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ordine of ordini">
+                    <th scope="row">{{ordine.id}}</th>
+                    <td>{{ordine.numero}}</td>
+                    <td>{{ordine.data}}</td>
+                    <td>{{getTariffaMigliore(ordine.id)}}</td>
+                </tr>
+            </tbody> 
+        </table>
+    </div>       
+</div>
