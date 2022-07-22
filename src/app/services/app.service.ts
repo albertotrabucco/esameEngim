@@ -14,18 +14,26 @@ export class AppService {
 
 
   getArticoli(){
-    return this.http.get<IArticolo[]>("http://localhost:8081/esame/articoli")
+    return this.http.get<IArticolo[]>("http://localhost:8081/esame/articoli");
   }
 
   getOrdini(){
-    return this.http.get<IOrdine[]>("http://localhost:8081/esame/ordini")
+    return this.http.get<IOrdine[]>("http://localhost:8081/esame/ordini");
   }
 
   getTariffe(){
-    return this.http.get<ITariffa[]>("http://localhost:8081/esame/tariffe")
+    return this.http.get<ITariffa[]>("http://localhost:8081/esame/tariffe");
   }
   getVoci(){
-    return this.http.get<IVoce[]>("http://localhost:8081/esame/voci")
+    return this.http.get<IVoce[]>("http://localhost:8081/esame/voci");
+  }
+
+  deleteTariffa(id: number){
+    return this.http.delete(`http://localhost:8081/esame/tariffe/delete?id=${id}`);
+  }
+
+  addTariffa(tariffa: any){
+    return this.http.post(`http://localhost:8081/esame/tariffe/add`, tariffa);
   }
 
 }

@@ -1,17 +1,18 @@
 <div class="container">
-    <div class="row w100 py-3 pb-5">
+    <div class="row w100 py-3">
         <h3>{{title}}</h3>
     </div>
     <div class="row w100 py-3">
-        <table class="table table-hover"style="width: 100%; border-collapse: collapse;">
+        <table class="table table-hover" style="width: 100%; border-collapse: collapse;">
             <thead class="thead">
-              <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Corriere</th>
-                <th scope="col">Offerta</th>
-                <th scope="col">Peso Massimo</th>
-                <th scope="col">Costo</th>                
-              </tr>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Corriere</th>
+                    <th scope="col">Offerta</th>
+                    <th scope="col">Peso Massimo</th>
+                    <th scope="col">Costo</th>
+                    <th scope="col">Operazioni</th>
+                </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let tariffa of tariffe">
@@ -20,8 +21,38 @@
                     <td>{{tariffa.nome_tariffa}}</td>
                     <td>{{tariffa.peso_massimo}} Kg</td>
                     <td>{{tariffa.costo}} €</td>
+                    <td>
+                        <button type="button" class="btn btn-danger" (click)="Delete(tariffa)">Elimina</button>
+                    </td>
                 </tr>
-            </tbody> 
+            </tbody>
         </table>
-    </div>       
+    </div>
+    <div class="row pb-2">
+        <div class="col"></div>
+        <div class="col">
+            <form #tariffaForm="ngForm" (ngSubmit)="Aggiungi(tariffaForm)">
+                <div class="form-group row py-1">
+                    <label for="corriere">Corriere: </label>
+                    <input id="nome_corriere" name="nome_corriere" type="text" #nome_corriere (ngModel)="nome_corriere" class="form-control" placeholder="Nome Corriere">
+                </div>
+                <div class="form-group row py-1">
+                    <label for="nome_tariffa">Offerta: </label>
+                    <input id="nome_tariffa" name="nome_tariffa" type="text" #nome_tariffa (ngModel)="nome_tariffa" class="form-control" placeholder="Nome Offerta">
+                </div>
+                <div class="form-group row py-1">
+                    <label for="peso_massimo">Peso Massimo: </label>
+                    <input id="peso_massimo" name="peso_massimo" type="text" #peso_massimo (ngModel)="peso_massimo" class="form-control" placeholder="0.00">
+                </div>
+                <div class="form-group row py-1">
+                    <label for="costo">Costo: </label>
+                    <input id="costo" name="costo" type="text" #costo (ngModel)="costo" class="form-control" placeholder="0.00">
+                </div>
+                <div class="form-group row py-1">
+                    <button class="btn btn-success" type="submit">Aggiungi</button>
+                </div>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
 </div>
