@@ -7,7 +7,7 @@
 -- Versione del server: 10.4.21-MariaDB
 -- Versione PHP: 7.4.25
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -79,7 +79,7 @@ INSERT INTO `ordini` (`Id`, `Numero`, `Data`) VALUES
 --
 
 CREATE TABLE `tariffe_corrieri` (
-  `Id` int(11) NOT NULL,
+  `Id` int(11)  NOT NULL,
   `nome_corriere` varchar(64) DEFAULT NULL,
   `nome_tariffa` varchar(64) DEFAULT NULL,
   `peso_massimo` float DEFAULT NULL,

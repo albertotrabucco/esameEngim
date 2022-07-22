@@ -8,10 +8,7 @@ import com.example.esameengim.model.repository.ArticoloRepository;
 import com.example.esameengim.model.repository.OrdineRepository;
 import com.example.esameengim.model.repository.TariffaCorriereRepository;
 import com.example.esameengim.model.repository.VoceRepository;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,5 +30,11 @@ public class Controller {
 
     @GetMapping("/voci")
     public List<Voce> getVoci() { return VoceRepository.getVoci(); }
+
+    @DeleteMapping("/tariffe/delete")
+    public void deleteTariffa(int id){ TariffaCorriereRepository.deleteTariffa(id); }
+
+    @PostMapping("/tariffe/add")
+    public TariffaCorriere addTariffa(@RequestBody TariffaCorriere tariffa){ return TariffaCorriereRepository.addTariffa(tariffa); }
 
 }

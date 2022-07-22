@@ -1,6 +1,7 @@
 package com.example.esameengim.model.repository;
 
 import com.example.esameengim.model.TariffaCorriere;
+import com.mysql.cj.protocol.Resultset;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -39,4 +40,34 @@ public class TariffaCorriereRepository {
         //restituisco la lista
         return tariffeCorrieri;
     }
+
+    public static void deleteTariffa(int id){
+        try{
+            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            PreparedStatement stmt = conn.prepareStatement("delete from tariffe_corrieri where Id=?");
+            stmt.setInt(1,id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static TariffaCorriere addTariffa(TariffaCorriere tariffa){
+        try {
+            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO tariffe_corrieri (Id,nome_corriere, nome_tariffa, peso_massimo, costo) VALUE (NULL,?,?,?,?)");
+            stmt.setString(1, tariffa.getNome_corriere());
+            stmt.setString(2, tariffa.getNome_tariffa());
+            stmt.setFloat(3, tariffa.getPeso_massimo());
+            stmt.setFloat(4, tariffa.getCosto());
+            stmt.executeUpdate();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tariffa;
+    }
+
+
+
 }
