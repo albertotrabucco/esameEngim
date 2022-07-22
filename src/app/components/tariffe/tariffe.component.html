@@ -1,3 +1,4 @@
+<div class="background">
 <div class="container">
     <div class="row w100 py-3">
         <h3>{{title}}</h3>
@@ -31,22 +32,26 @@
     <div class="row pb-2">
         <div class="col"></div>
         <div class="col">
-            <form #tariffaForm="ngForm" (ngSubmit)="Aggiungi(tariffaForm)">
+            <form #tariffaForm="ngForm" (ngSubmit)="Aggiungi(tariffaForm, $event)" class="needs-validation">
                 <div class="form-group row py-1">
                     <label for="corriere">Corriere: </label>
-                    <input id="nome_corriere" name="nome_corriere" type="text" #nome_corriere (ngModel)="nome_corriere" class="form-control" placeholder="Nome Corriere">
+                    <input id="nome_corriere" name="nome_corriere" type="text" #nome_corriere (ngModel)="nome_corriere" class="form-control" placeholder="Nome Corriere" required>
+                    <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
                 <div class="form-group row py-1">
                     <label for="nome_tariffa">Offerta: </label>
-                    <input id="nome_tariffa" name="nome_tariffa" type="text" #nome_tariffa (ngModel)="nome_tariffa" class="form-control" placeholder="Nome Offerta">
+                    <input id="nome_tariffa" name="nome_tariffa" type="text" #nome_tariffa (ngModel)="nome_tariffa" class="form-control" placeholder="Nome Offerta" required>
+                    <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
                 <div class="form-group row py-1">
                     <label for="peso_massimo">Peso Massimo: </label>
-                    <input id="peso_massimo" name="peso_massimo" type="text" #peso_massimo (ngModel)="peso_massimo" class="form-control" placeholder="0.00">
+                    <input id="peso_massimo" name="peso_massimo" type="text" #peso_massimo (ngModel)="peso_massimo" class="form-control" placeholder="0.00" required>
+                    <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
                 <div class="form-group row py-1">
                     <label for="costo">Costo: </label>
-                    <input id="costo" name="costo" type="text" #costo (ngModel)="costo" class="form-control" placeholder="0.00">
+                    <input id="costo" name="costo" type="text" #costo (ngModel)="costo" class="form-control" placeholder="0.00" required>
+                    <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
                 <div class="form-group row py-1">
                     <button class="btn btn-success" type="submit">Aggiungi</button>
@@ -55,4 +60,5 @@
         </div>
         <div class="col"></div>
     </div>
+</div>
 </div>

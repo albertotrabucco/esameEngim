@@ -12,24 +12,35 @@ import { NgForm } from '@angular/forms';
 })
 export class TariffeComponent implements OnInit {
 
+
+
   tariffe: ITariffa[] = [];
   title: string = "Lista di Tariffe";
 
-  constructor(private appService: AppService) { }
+  constructor(private appService: AppService) {
+  }
 
   ngOnInit(): void {
     this.appService.getTariffe().subscribe(data =>
         this.tariffe = data)
   }
 
-  Aggiungi(tariffaForm: NgForm){
-    this.appService.addTariffa(tariffaForm.value).subscribe(
-      (resp) => {
-        alert("Aggiunta nuova Tariffa");
-        tariffaForm.reset();
-        window.location.reload();
-      }
-    );
+  Aggiungi(tariffaForm: NgForm, $event: Event){
+    var form = document.getElementsByClassName('needs-validation')[0] as HTMLFormElement;
+    if (form.checkValidity() === false) {
+      $event.stopPropagation()
+      $event.preventDefault()
+    } else {
+      form.classList.add('was-validated');
+      this.appService.addTariffa(tariffaForm.value).subscribe(
+        (resp) => {
+          alert("Aggiunta nuova Tariffa");
+          tariffaForm.reset();
+          window.location.reload();
+        }
+      );
+    }
+    
   }
 
   Delete(tariffa: ITariffa){
